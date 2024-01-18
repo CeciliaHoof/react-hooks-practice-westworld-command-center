@@ -1,18 +1,33 @@
 import React from "react";
 import "../stylesheets/Area.css";
+import HostList from "./HostList";
 
-function Area() {
+function Area({area, hosts, onActivate, onChangeArea, selectedHost, selectHost}) {
+  const { name } = area
+  let formattedName;
+  if (name.includes("_")){
+    const nameArr = name.split("_")
+    formattedName = nameArr.map(name => name.charAt(0).toUpperCase() + name.slice(1)).join(' ')
+  } else {
+    formattedName = name.charAt(0).toUpperCase() + name.slice(1)
+  }
+
+  const areaHosts = hosts.filter(host => host.area === name)
+
   return (
     <div
       className="area"
-      id={
-        /* Pass in the area name here to make sure this is styled correctly */ "id"
-      }
+      id={name}
     >
       <h3 className="labels">
-        {/* Don't just pass in the name from the data...clean that thing up */}
+        {formattedName/* Don't just pass in the name from the data...clean that thing up */}
       </h3>
-      {/* See Checkpoint 1 item 2 in the Readme for a clue as to what goes here */}
+      <HostList 
+        hosts={areaHosts}
+        onActivate={onActivate}
+        onChangeArea={onChangeArea}
+        selectedHost={selectedHost}
+        selectHost={selectHost}/>
     </div>
   );
 }
@@ -28,3 +43,4 @@ Area.propTypes = {
 };
 
 export default Area;
+
