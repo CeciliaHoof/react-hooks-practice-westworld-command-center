@@ -3,16 +3,16 @@ import { Segment, Image } from "semantic-ui-react";
 import * as Images from "../services/Images";
 import HostInfo from "./HostInfo"
 
-function Details({host, updateSelectedHost, areas, onActivate, onChangeArea}) {
+function Details({host, areas, onActivate, onChangeArea, currentNumHosts}) {
 
   return (
     <Segment id="details" className="HQComps">
       {host ? 
       <HostInfo host={host}
-      updateSelectedHost={updateSelectedHost}
       areas={areas}
       onActivate={onActivate}
-      onChangeArea={onChangeArea}/>:
+      onChangeArea={onChangeArea}
+      currentNumHosts={currentNumHosts}/>:
       <Image size="small" src={Images.westworldLogo} /> }
     </Segment>
   );

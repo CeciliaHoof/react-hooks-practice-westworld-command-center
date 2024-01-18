@@ -2,7 +2,7 @@ import React from "react";
 import { Segment } from "semantic-ui-react";
 import Area from "./Area"
 
-function WestworldMap({areas, hosts, onActivate, onChangeArea, selectedHost, selectHost}) {
+function WestworldMap({areas, hosts, onActivate, onChangeArea, selectedHost, onSelectHost}) {
   
   const displayAreas = areas.map((area, index) => 
     <Area 
@@ -11,7 +11,7 @@ function WestworldMap({areas, hosts, onActivate, onChangeArea, selectedHost, sel
       onActivate={onActivate}
       onChangeArea={onChangeArea}
       selectedHost={selectedHost}
-      selectHost={selectHost}
+      onSelectHost={onSelectHost}
       key={area.id}
       />)
 

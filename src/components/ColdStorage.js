@@ -2,7 +2,7 @@ import React from "react";
 import { Segment } from "semantic-ui-react";
 import HostList from "./HostList";
 
-function ColdStorage({hosts, selectHost, selectedHost}) {
+function ColdStorage({hosts, onSelectHost, selectedHost}) {
   
   return (
     <Segment.Group className="HQComps">
@@ -13,7 +13,7 @@ function ColdStorage({hosts, selectHost, selectedHost}) {
         <HostList 
           hosts={hosts}
           selectedHost={selectedHost}
-          selectHost={selectHost}/>
+          onSelectHost={onSelectHost}/>
       </Segment>
     </Segment.Group>
   );

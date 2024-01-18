@@ -10,8 +10,12 @@ import {
 } from "semantic-ui-react";
 import "../stylesheets/HostInfo.css";
 
-function HostInfo({host, updateSelectedHost, areas, onActivate, onChangeArea}) {
+function HostInfo({host, areas, onActivate, onChangeArea, currentNumHosts}) {
   const { imageUrl, firstName, gender, active, area} = host
+
+  const areaLimits = {}
+
+  areas.forEach(area => {areaLimits[area.name] = area.limit})
   
   function formatName(name){
     let formattedName;
@@ -30,13 +34,13 @@ function HostInfo({host, updateSelectedHost, areas, onActivate, onChangeArea}) {
       text: formatName(area.name), 
       value: area.name}})
   
-  function handleOptionChange(e, { value }) {
-    updateSelectedHost({...host, area: value})
-    onChangeArea(host, value)
+  function handleAreaChange(e, { value }) {
+    if (currentNumHosts[value] >= areaLimits[value]){
+      console.log("You've already reached the area limit!")
+    } else {onChangeArea(host, value)}
   }
 
-  function handleRadioChange() {
-    updateSelectedHost({...host, active:!active})
+  function handleActivationChange() {
     onActivate(host)
   }
 
@@ -58,7 +62,7 @@ function HostInfo({host, updateSelectedHost, areas, onActivate, onChangeArea}) {
             </Card.Header>
             <Card.Meta>
               <Radio
-                onChange={handleRadioChange}
+                onChange={handleActivationChange}
                 label={active ? "Active" : "Decommissioned"}
                 checked={active}
                 slider
@@ -67,7 +71,7 @@ function HostInfo({host, updateSelectedHost, areas, onActivate, onChangeArea}) {
             <Divider />
             Current Area:
             <Dropdown
-              onChange={handleOptionChange}
+              onChange={handleAreaChange}
               value={area}
               options={areaOptions}
               selection

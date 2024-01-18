@@ -1,0 +1,27 @@
+
+Host Behavior:✅
+Clicking a Host selects them with a red border and displays their information in the HostInfo component. Styling has been given via classNames (see Host component). ✅
+
+Only one Host can be selected at a time.✅
+
+Only one Host can exist on the screen at a time. If they're in Cold Storage then they're not on the WestworldMap and vice versa.✅
+
+If a host's active attribute is set to false then they are decommissioned and should appear in ColdStorage. The HostInfo radio button should reflect this as well, reading "Active" if active: true and "Decommissioned" if active: false.✅
+
+The Area dropdown should be pre-selected with the area the host is currently in, even if they are in ColdStorage.✅
+
+If a host is Active, selecting a new area from the dropdown should move that host to the corresponding area. If the host is Decommissioned they should not be able to leave ColdStorage, but their area attribute/dropdown should still update.✅
+
+Setting a host's toggle to Decommissioned should immediately remove them from their area and place them in ColdStorage.✅
+
+Limit Hosts: Each Area should only allow the number of hosts given by that area's limit attribute. This includes hosts set to areas in ColdStorage ✅
+
+Activate/Decommission All: ✅
+Activate All button onClick:
+    activate all hosts
+    turn button green and change to read Decommission All
+Decommission All button onClick:
+    decommission all hosts
+    turn button red and read Activate All
+
+Logging

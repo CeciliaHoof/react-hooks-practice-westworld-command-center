@@ -2,7 +2,7 @@ import React from "react";
 import "../stylesheets/Area.css";
 import HostList from "./HostList";
 
-function Area({area, hosts, onActivate, onChangeArea, selectedHost, selectHost}) {
+function Area({area, hosts, onActivate, onChangeArea, selectedHost, onSelectHost}) {
   const { name } = area
   let formattedName;
   if (name.includes("_")){
@@ -27,7 +27,7 @@ function Area({area, hosts, onActivate, onChangeArea, selectedHost, selectHost})
         onActivate={onActivate}
         onChangeArea={onChangeArea}
         selectedHost={selectedHost}
-        selectHost={selectHost}/>
+        onSelectHost={onSelectHost}/>
     </div>
   );
 }
